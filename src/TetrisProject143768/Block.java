@@ -1,17 +1,20 @@
 package TetrisProject143768;
 
 public class Block {
-	private String color;
-	
-	public Block(String colorChoice) {
+	// declare block vars
+	// color can have value set as l = light blue, y = yellow, p = pink, d = dark
+	// blue, o = orange, g = green, r = red
+	private char color;
+
+	// Constructor for block
+	public Block(char colorChoice) {
 		color = colorChoice;
-		
-		
-		
+
 	}
-	
-	public String getColor() {
-		
-		return this.color;		
+
+	// getter for GUI to use
+	public char getColor() {
+
+		return this.color;
 	}
 }
