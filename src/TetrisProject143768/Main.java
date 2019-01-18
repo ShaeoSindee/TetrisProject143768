@@ -33,11 +33,16 @@ public class Main {
 		// instantiate all game variable
 		int score = 0;
 		char nextTetronimo;
+		boolean isOver = false; // controls game loop
+		boolean won = false; // default lose, set to win in game loop if win.
 
 		// Set up board object
 		Board bord = new Board();
 
-		// game logic
+		// GAME LOGIC
+		while (!isOver) {
+
+		}
 
 		// when game finished, pass execution to final screen method (for GUI purposes)
 		finalScreen();
