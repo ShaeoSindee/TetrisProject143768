@@ -1,24 +1,28 @@
 package TetrisProject143768;
 
 import java.util.Random;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;  
+
 
 public class Tetronimo {
 
-	private Block[][] tetromino = new Block[4][4];
+	private Coordinate[] coordinate = new Coordinate[4];
+	private char color;
 	
+	//this will be depresiated 
 	private Random rand = new Random(System.currentTimeMillis());
 	
 	public Tetronimo() {
-		//initialize array
-		for(int y = 0;y< tetromino[0].length; y++) {			
-			for(int x = 0;x< tetromino.length; x++) {
-				tetromino[x][y] = new Block("Empty");
-				}}
+		
+		
 		
 		getRandomTetromino();
 	}// end constructor
 
 	private void getRandomTetromino() {
+		
 		
 		int choice = 6;//rand.nextInt(7);
 		switch(choice) {
@@ -47,107 +51,71 @@ public class Tetronimo {
 		}
 		
 	}
+	//cordinates listed from top right to bottom left.
 
 	private void sSkew() {
-		int x = 0;
-		int y = 0;
+		this.color = 'g';
+		coordinate[0] = new Coordinate(-1,1);
+		coordinate[1] = new Coordinate(0,1);
+		coordinate[2] = new Coordinate(0,0);
+		coordinate[3] = new Coordinate(1,0);
 		
-		tetromino[0+x][0+y] = new Block("Red");
-		tetromino[1+x][0+y] = new Block("Red");
-		tetromino[3+x][1+y] = new Block("Red");
-		tetromino[2+x][1+y] = new Block("Red");
-		
-	
 	}
 	
 	private void zSkew() {
-		int x = 0;
-		int y = 0;
-		
-		tetromino[2+x][0+y] = new Block("Green");
-		tetromino[3+x][0+y] = new Block("Green");
-		tetromino[0+x][1+y] = new Block("Green");
-		tetromino[1+x][1+y] = new Block("Green");
-		
+		this.color = 'r';
+		coordinate[0] = new Coordinate(0,1);
+		coordinate[1] = new Coordinate(1,1);
+		coordinate[2] = new Coordinate(-1,0);
+		coordinate[3] = new Coordinate(1,0);
+
 	}
 
 	private void jShape() {
-		int x = 0;
-		int y = 0;
-		
-		tetromino[0+x][0+y] = new Block("Orange");
-		tetromino[0+x][1+y] = new Block("Orange");
-		tetromino[1+x][0+y] = new Block("Orange");
-		tetromino[2+x][0+y] = new Block("Orange");
-		tetromino[3+x][0+y] = new Block("Orange");
-		
+		this.color = 'd';
+		coordinate[0] = new Coordinate(-1,1);
+		coordinate[1] = new Coordinate(-1,0);
+		coordinate[2] = new Coordinate(0,0);
+		coordinate[3] = new Coordinate(1,0);
+
 	}
 	
 	private void lShape() {
-		int x = 0;
-		int y = 0;
-		
-		tetromino[0+x][0+y] = new Block("Blue");
-		tetromino[1+x][0+y] = new Block("Blue");
-		tetromino[2+x][0+y] = new Block("Blue");
-		tetromino[3+x][0+y] = new Block("Blue");
-		tetromino[3+x][1+y] = new Block("Blue");
-		
+		this.color = 'o';
+		coordinate[0] = new Coordinate(1,1);
+		coordinate[1] = new Coordinate(-1,0);
+		coordinate[2] = new Coordinate(0,0);
+		coordinate[3] = new Coordinate(1,0);
+
 	}
 
 	private void tShape() {
-		int x = 0;
-		int y = 0;
-		
-		tetromino[0+x][1+y] = new Block("Pink");
-		tetromino[1+x][1+y] = new Block("Pink");
-		tetromino[1+x][2+y] = new Block("Pink");
-		tetromino[2+x][1+y] = new Block("Pink");
-		
+		this.color = 'p';
+		coordinate[0] = new Coordinate(0,1);
+		coordinate[1] = new Coordinate(-1,0);
+		coordinate[2] = new Coordinate(0,0);
+		coordinate[3] = new Coordinate(1,0);
+
 	}
 
 	private void square() {
-		int x = 0;
-		int y = 0;
-		
-		tetromino[0+x][0+y] = new Block("Yellow");
-		tetromino[0+x][1+y] = new Block("Yellow");
-		tetromino[1+x][0+y] = new Block("Yellow");
-		tetromino[1+x][1+y] = new Block("Yellow");
-		
-		
+		this.color = 'y';
+		coordinate[0] = new Coordinate(0,1);
+		coordinate[1] = new Coordinate(-1,0);
+		coordinate[2] = new Coordinate(0,0);
+		coordinate[3] = new Coordinate(1,0);
+	
 	}
 
 	private void straight() {
-		//cyan
-		int x = 0;
-		int y = 0;
-		
-		tetromino[0+x][0+y] = new Block("Cyan");
-		tetromino[1+x][0+y] = new Block("Cyan");
-		tetromino[2+x][0+y] = new Block("Cyan");
-		tetromino[3+x][0+y] = new Block("Cyan");
-		
-		
-
+		this.color = 'L';
+		coordinate[0] = new Coordinate(-1,0);
+		coordinate[1] = new Coordinate(0,0);
+		coordinate[2] = new Coordinate(1,0);
+		coordinate[3] = new Coordinate(2,0);
+	
 	}
-	//this method is only for debugging!!!
-	private void Tester() {
-		
-		for(int y = 0;y< tetromino[0].length; y++) {
-			
-			for(int x = 0;x< tetromino.length; x++) {
-				String temp = tetromino[x][y].getColor();
-				if(x==3) {
-					temp+= "\n";
-				}
-				else {
-					temp+= "\t";
-				}
-				System.out.print(temp);
-			}// end inner loop
-		}//end outter loop
-	}//end method
+	
 	
 	
 }
